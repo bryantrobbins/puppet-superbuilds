@@ -37,5 +37,5 @@
 #
 class superbuilds {
 
-
+  include jenkins
 }
