@@ -38,4 +38,10 @@
 class superbuilds {
 
   include jenkins
+	
+	jenkins::security {
+		security_model = "full_control"	
+	}
+  
+
 }
