@@ -37,9 +37,8 @@
 #
 class superbuilds {
 
-  include jenkins
-  jenkins::security { 'security':
-    security_model => 'full_control'
+  class { 'jenkins':
+
   }
 
 }
