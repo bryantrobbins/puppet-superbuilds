@@ -37,10 +37,23 @@
 #
 class superbuilds {
 
-  class { '::jenkins':
-    install_java => true,
-    cli          => true,
+  include ::jenkins::cli_helper
+
+  user { 'jenkinsworker':
+    ensure           => 'present',
+    password         => '!!',
+    password_max_age => '',
+    password_min_age => '0',
   }
 
-  include ::jenkins::cli_helper
+  ssh_keygen { 'jenkinsworker':
+    require          => User['jenkinsworker']
+  }
+
+  class { '::jenkins':
+    install_java     => true,
+    cli              => true,
+    cli_ssh_keyfile  => '/home/jenkinsworker/.ssh/id_rsa',
+    require          => Ssh_keygen['jenkinsworker']
+  }
 }
