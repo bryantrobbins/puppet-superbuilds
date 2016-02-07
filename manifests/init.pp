@@ -35,7 +35,8 @@
 #
 # Copyright 2011 Your name here, unless otherwise noted.
 #
-class superbuilds {
+class superbuilds (
+) {
 
   user { 'jenkinsworker':
     ensure           => 'present',
@@ -46,10 +47,20 @@ class superbuilds {
     require          => User['jenkinsworker'],
   }
 
+  file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
+    ensure           => file,
+    content          => template('superbuilds/setadmin.erb'),
+    require          => Ssh_keygen['jenkinsworker'],
+  }
+
+  exec { '/usr/lib/jenkins/jenkins-bootstap.sh':
+    require          => File['/usr/lib/jenkins/jenkins-bootstrap.sh'], 
+  }
+
   class { 'jenkins':
     install_java     => true,
     cli              => true,
     cli_ssh_keyfile  => '/home/jenkinsworker/.ssh/id_rsa',
-    require          => Ssh_keygen['jenkinsworker'],
+    require          => Exec['/usr/lib/jenkins/jenkins-bootstrap.sh'],
   }
 }

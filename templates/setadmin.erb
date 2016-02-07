@@ -1,0 +1,20 @@
+#!/bin/bash -e
+# Generate an SSH key for the admin user
+ADMIN_USER='admin'
+ADMIN_EMAIL='admin@localhost'
+ADMIN_PASSWORD='<%= rand(36**length).to_s(36) %>'
+ADMIN_FULLNAME='Created for puppet'
+ADMIN_SSH_KEY='/home/jenkinsworker/.ssh/id_rsa'
+JENKINS_CLI='/usr/lib/jenkins/jenkins-cli.jar'
+PUPPET_HELPER='/usr/lib/jenkins/puppet_helper.groovy'
+HELPER="java -jar $JENKINS_CLI -s http://127.0.0.1:8080 groovy $PUPPET_HELPER"
+DONEFILE='/usr/lib/jenkins/jenkins-bootstrap.done'
+ADMIN_PUBKEY="$(cat ${ADMIN_SSH_KEY}.pub)"
+
+# Create the admin user, passing no credentials
+$HELPER create_or_update_user "$ADMIN_USER" "$ADMIN_EMAIL" "$ADMIN_PASSWORD" "$ADMIN_FULLNAME" "$ADMIN_PUBKEY"
+
+# Enable security. After this, credentials will be required.
+$HELPER set_security full_control
+
+touch $DONEFILE
