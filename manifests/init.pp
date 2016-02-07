@@ -41,9 +41,7 @@ class superbuilds {
 
   }
 
-  jenkins_security_realm { 'hudson.security.PAMSecurityRealm':
-    ensure    => 'present',
-    arguments => ['sshd'], # service name
+  class { 'jenkins::security':
+    security_model => 'full_control',
   }
-
 }
