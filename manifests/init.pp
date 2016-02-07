@@ -40,7 +40,7 @@ class superbuilds {
   user { 'jenkinsworker':
     ensure           => 'present',
     password         => '!!',
-    password_max_age => '',
+    password_max_age => '0',
     password_min_age => '0',
   }
 
