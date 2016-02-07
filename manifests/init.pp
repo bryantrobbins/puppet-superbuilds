@@ -41,7 +41,9 @@ class superbuilds {
 
   }
 
-  class { 'jenkins::security':
-    security_model => 'full_control',
+  jenkins_security_realm { 'hudson.security.HudsonPrivateSecurityRealm':
+    ensure    => 'present',
+    arguments => [false, false, undef],
   }
+
 }
