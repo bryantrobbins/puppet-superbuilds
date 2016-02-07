@@ -41,4 +41,18 @@ class superbuilds {
 
   }
 
+  jenkins_authorization_strategy { 'org.jenkinsci.plugins.GithubAuthorizationStrategy':
+    ensure    => 'present',
+    arguments => [
+      'admin',
+      true,
+      false,
+      false,
+      lsst,
+      false,
+      false,
+      false,
+    ],
+}
+
 }
