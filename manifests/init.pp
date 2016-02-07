@@ -37,9 +37,12 @@
 #
 class superbuilds {
 
-  class { 'jenkins':
-
+  class { '::jenkins':
+    install_java => true,
+    cli          => true,
   }
+
+  include ::jenkins::cli_helper
 
   jenkins_security_realm { 'hudson.security.HudsonPrivateSecurityRealm':
     ensure    => 'present',
