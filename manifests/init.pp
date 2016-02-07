@@ -39,7 +39,7 @@ class superbuilds {
 
   user { 'jenkinsworker':
     ensure           => 'present',
-    home             => '/home/jenkinsworker',
+    managehome       => true,
   }
 
   ssh_keygen { 'jenkinsworker':
