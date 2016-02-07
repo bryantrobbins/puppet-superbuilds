@@ -39,16 +39,17 @@ class superbuilds {
 
   user { 'jenkinsworker':
     ensure           => 'present',
+    home             => '/home/jenkinsworker',
   }
 
   ssh_keygen { 'jenkinsworker':
-    require          => User['jenkinsworker']
+    require          => User['jenkinsworker'],
   }
 
   class { 'jenkins':
     install_java     => true,
     cli              => true,
     cli_ssh_keyfile  => '/home/jenkinsworker/.ssh/id_rsa',
-    require          => Ssh_keygen['jenkinsworker']
+    require          => Ssh_keygen['jenkinsworker'],
   }
 }
