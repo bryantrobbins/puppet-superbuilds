@@ -44,7 +44,7 @@ class superbuilds {
 
   include ::jenkins::cli_helper
 
-  ::jenkins::jenkins_security_realm { 'hudson.security.HudsonPrivateSecurityRealm':
+  jenkins_security_realm { 'hudson.security.HudsonPrivateSecurityRealm':
     ensure    => 'present',
     arguments => [false, false, undef],
   }
