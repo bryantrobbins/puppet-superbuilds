@@ -53,7 +53,7 @@ class superbuilds (
     require          => Ssh_keygen['jenkinsworker'],
   }
 
-  exec { '/usr/lib/jenkins/jenkins-bootstap.sh':
+  exec { '/usr/lib/jenkins/jenkins-bootstrap.sh':
     require          => File['/usr/lib/jenkins/jenkins-bootstrap.sh'], 
     creates          => '/usr/lib/jenkins/jenkins-bootstrap.done',
   }
