@@ -53,15 +53,14 @@ class superbuilds (
     require          => Ssh_keygen['jenkinsworker'],
   }
 
+  class { 'jenkins::cli_helper':
+    install_java     => true,
+    cli              => true,
+  }
+
   exec { '/usr/lib/jenkins/jenkins-bootstrap.sh':
-    require          => File['/usr/lib/jenkins/jenkins-bootstrap.sh'], 
+    require          => [ Class['jenkins::cli_helper'], File['/usr/lib/jenkins/jenkins-bootstrap.sh'] ]
     creates          => '/usr/lib/jenkins/jenkins-bootstrap.done',
   }
 
-  class { 'jenkins':
-    install_java     => true,
-    cli              => true,
-    cli_ssh_keyfile  => '/home/jenkinsworker/.ssh/id_rsa',
-    require          => Exec['/usr/lib/jenkins/jenkins-bootstrap.sh'],
-  }
 }
