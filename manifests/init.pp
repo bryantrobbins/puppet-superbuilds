@@ -41,18 +41,9 @@ class superbuilds {
 
   }
 
-  jenkins_authorization_strategy { 'org.jenkinsci.plugins.GithubAuthorizationStrategy':
+  jenkins_security_realm { 'hudson.security.PAMSecurityRealm':
     ensure    => 'present',
-    arguments => [
-      'admin',
-      true,
-      false,
-      false,
-      lsst,
-      false,
-      false,
-      false,
-    ],
-}
+    arguments => ['sshd'], # service name
+  }
 
 }
