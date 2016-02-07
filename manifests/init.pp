@@ -53,7 +53,7 @@ class superbuilds (
   file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
     ensure           => file,
     content          => template('superbuilds/setadmin.erb'),
-    mode             => '0600',
+    mode             => '0700',
     require          => Class['jenkins::cli_helper'],
   }
 
