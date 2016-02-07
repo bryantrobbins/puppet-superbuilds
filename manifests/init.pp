@@ -37,8 +37,6 @@
 #
 class superbuilds {
 
-  include ::jenkins::cli_helper
-
   user { 'jenkinsworker':
     ensure           => 'present',
     password         => '!!',
