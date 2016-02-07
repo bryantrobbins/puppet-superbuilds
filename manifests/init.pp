@@ -47,17 +47,17 @@ class superbuilds (
     require          => User['jenkinsworker'],
   }
 
-  file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
-    ensure           => file,
-    content          => template('superbuilds/setadmin.erb'),
-    require          => Ssh_keygen['jenkinsworker'],
-  }
-
   class { 'jenkins::cli_helper':
   }
 
+  file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
+    ensure           => file,
+    content          => template('superbuilds/setadmin.erb'),
+    require          => Class['jenkins::cli_helper'],
+  }
+
   exec { '/usr/lib/jenkins/jenkins-bootstrap.sh':
-    require          => [ Class['jenkins::cli_helper'], File['/usr/lib/jenkins/jenkins-bootstrap.sh'] ],
+    require          => File['/usr/lib/jenkins/jenkins-bootstrap.sh'],
     creates          => '/usr/lib/jenkins/jenkins-bootstrap.done',
   }
 
