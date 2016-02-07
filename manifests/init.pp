@@ -59,7 +59,7 @@ class superbuilds (
   }
 
   exec { '/usr/lib/jenkins/jenkins-bootstrap.sh':
-    require          => [ Class['jenkins::cli_helper'], File['/usr/lib/jenkins/jenkins-bootstrap.sh'] ]
+    require          => [ Class['jenkins::cli_helper'], File['/usr/lib/jenkins/jenkins-bootstrap.sh'] ],
     creates          => '/usr/lib/jenkins/jenkins-bootstrap.done',
   }
 
