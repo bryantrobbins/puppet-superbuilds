@@ -54,8 +54,6 @@ class superbuilds (
   }
 
   class { 'jenkins::cli_helper':
-    install_java     => true,
-    cli              => true,
   }
 
   exec { '/usr/lib/jenkins/jenkins-bootstrap.sh':
