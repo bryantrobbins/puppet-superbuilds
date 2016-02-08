@@ -38,6 +38,9 @@
 class superbuilds (
 ) {
 
+  include packer
+  include docker
+
   user { 'jenkinsworker':
     ensure           => 'present',
     managehome       => true,
