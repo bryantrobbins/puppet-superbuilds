@@ -11,6 +11,18 @@ HELPER="java -jar $JENKINS_CLI -s http://127.0.0.1:8080 groovy $PUPPET_HELPER"
 DONEFILE='/usr/lib/jenkins/jenkins-bootstrap.done'
 ADMIN_PUBKEY="$(cat ${ADMIN_SSH_KEY}.pub)"
 
+# Wait for Jenkins to be available
+ready () {
+  res=$(curl -s 127.0.0.1:8080 | grep html | wc -l 2> /dev/null)
+}
+
+ready
+if [ "${res}" -lt "1" ]; then
+  echo "Waiting for Jenkins to respond"
+  sleep 10
+  ready
+fi
+
 # Create the admin user, passing no credentials
 $HELPER create_or_update_user "$ADMIN_USER" "$ADMIN_EMAIL" "$ADMIN_PASSWORD" "$ADMIN_FULLNAME" "$ADMIN_PUBKEY"
 
