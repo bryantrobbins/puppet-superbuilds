@@ -17,11 +17,12 @@ ready () {
 }
 
 ready
-if [ "${res}" -lt "1" ]; then
+while [ "${res}" -lt "1" ]
+do
   echo "Waiting for Jenkins to respond"
   sleep 10
   ready
-fi
+done
 
 # Create the admin user, passing no credentials
 $HELPER create_or_update_user "$ADMIN_USER" "$ADMIN_EMAIL" "$ADMIN_PASSWORD" "$ADMIN_FULLNAME" "$ADMIN_PUBKEY"
