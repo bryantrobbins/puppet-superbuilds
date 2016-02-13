@@ -13,11 +13,11 @@ ADMIN_PUBKEY="$(cat ${ADMIN_SSH_KEY}.pub)"
 
 # Wait for Jenkins to be available
 ready () {
-  res=$(curl -s 127.0.0.1:8080 | grep "Please wait" | wc -l 2> /dev/null)
+  res=$(curl -s 127.0.0.1:8080 | grep "Welcome to Jenkins!" | wc -l 2> /dev/null)
 }
 
 ready
-while [ "${res}" -gt "0" ]
+while [ "${res}" -lt "1" ]
 do
   echo "Waiting for Jenkins to respond"
   sleep 10
