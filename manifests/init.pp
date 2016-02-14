@@ -53,7 +53,8 @@ class superbuilds (
   }
 
   class { 'packer':
-    base_url         => 'https://releases.hashicorp.com/packer',
+    base_url         => 'https://releases.hashicorp.com/packer/',
+    version          => '0.8.6',
   }
 
   file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
