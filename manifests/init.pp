@@ -38,7 +38,7 @@
 class superbuilds (
 ) {
 
-  include docker
+#  include docker
 
   user { 'jenkinsworker':
     ensure           => 'present',
@@ -67,5 +67,6 @@ class superbuilds (
     require          => File['/usr/lib/jenkins/jenkins-bootstrap.sh'],
     creates          => '/usr/lib/jenkins/jenkins-bootstrap.done',
   }
+
 
 }
