@@ -38,7 +38,6 @@
 class superbuilds (
 ) {
 
-  include packer
   include docker
 
   user { 'jenkinsworker':
@@ -51,6 +50,10 @@ class superbuilds (
   }
 
   class { 'jenkins::cli_helper':
+  }
+
+  class { 'packer':
+    base_url         => 'https://releases.hashicorp.com/packer',
   }
 
   file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
