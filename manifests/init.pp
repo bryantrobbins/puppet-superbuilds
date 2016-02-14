@@ -52,6 +52,8 @@ class superbuilds (
   class { 'jenkins::cli_helper':
   }
 
+  jenkins::plugin { 'git': }
+
   class { 'packer':
     version          => '0.8.6',
   }
