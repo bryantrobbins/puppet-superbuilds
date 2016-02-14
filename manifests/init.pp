@@ -53,7 +53,6 @@ class superbuilds (
   }
 
   class { 'packer':
-    base_url         => 'https://releases.hashicorp.com/packer/',
     version          => '0.8.6',
   }
 
