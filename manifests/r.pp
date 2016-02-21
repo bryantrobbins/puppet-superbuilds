@@ -1,7 +1,7 @@
 class superbuilds::r (
 ) {
 
-  package { 'R-base':
+  package { 'R-core':
     ensure => present,
   }
   
