@@ -6,7 +6,7 @@ class superbuilds::docker (
   user { 'ec2-user':
     ensure           => 'present',
     groups           => 'docker',
-    require          => Group['docker'],
+    require          => Package['docker'],
     notify           => Service['docker'],
   }
 
