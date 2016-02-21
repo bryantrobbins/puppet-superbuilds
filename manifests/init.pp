@@ -55,10 +55,6 @@ class superbuilds (
 
   jenkins::plugin { 'git': }
 
-  class { 'packer':
-    version          => '0.8.6',
-  }
-
   file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
     ensure           => file,
     content          => template('superbuilds/setadmin.erb'),
