@@ -7,5 +7,6 @@ class superbuilds::docker (
     ensure           => 'present',
     groups           => 'docker',
     require          => Package['docker'],
+    notify           => Service['docker'],
   }
 }
