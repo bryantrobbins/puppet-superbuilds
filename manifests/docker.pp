@@ -1,7 +1,7 @@
 class superbuilds::docker (
 ) {
 
-  include docker
+  class { '::docker': }
 
 #  user { 'ec2-user':
 #    ensure           => 'present',

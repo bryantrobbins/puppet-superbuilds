@@ -38,7 +38,7 @@
 class superbuilds (
 ) {
 
-  include docker
+  include superbuilds::docker
 
   user { 'jenkinsworker':
     ensure           => 'present',
