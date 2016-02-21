@@ -10,10 +10,4 @@ class superbuilds::docker (
     notify           => Service['docker'],
   }
 
-  user { 'jenkins':
-    ensure           => 'present',
-    groups           => 'docker',
-    require          => Group['docker'],
-    notify           => Service['docker'],
-  }
 }
