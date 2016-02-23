@@ -64,6 +64,7 @@ class superbuilds (
   jenkins::plugin { 'token-macro': }
   jenkins::plugin { 'credentials': }
   jenkins::plugin { 'scm-api': }
+  jenkins::plugin { 'job-dsl': }
 
   file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
     ensure           => file,
