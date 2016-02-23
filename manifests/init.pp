@@ -66,6 +66,10 @@ class superbuilds (
   jenkins::plugin { 'scm-api': }
   jenkins::plugin { 'job-dsl': }
 
+  jenkins::job { 'seed-job':
+    config => template("templates/seed.xml.erb"),
+  }
+
   file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
     ensure           => file,
     content          => template('superbuilds/setadmin.erb'),
