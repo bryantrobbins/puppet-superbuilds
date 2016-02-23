@@ -55,7 +55,15 @@ class superbuilds (
   class { 'jenkins::cli_helper':
   }
 
-  jenkins::plugin { 'git': }
+  jenkins::plugin { 'git-client': }
+  jenkins::plugin { 'ssh-credentials': }
+  jenkins::plugin { 'mailer': }
+  jenkins::plugin { 'promoted-builds': }
+  jenkins::plugin { 'matrix-project': }
+  jenkins::plugin { 'parameterized-trigger': }
+  jenkins::plugin { 'token-macro': }
+  jenkins::plugin { 'credentials': }
+  jenkins::plugin { 'scm-api': }
 
   file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
     ensure           => file,
