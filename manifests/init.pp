@@ -52,8 +52,10 @@ class superbuilds (
     require          => User['jenkinsworker'],
   }
 
-  class { 'jenkins::cli_helper':
-    ssh_keyfile => '/home/jenkinsworker/.ssh/id_rsa'
+  class { 'jenkins::cli_helper': }
+  class { 'jenkins::'
+    cli_ssh_keyfile  => '/home/jenkinsworker/.ssh/id_rsa',
+    cli_ssh_keyfile  => '/home/jenkinsworker/.ssh/id_rsa',
   }
 
   jenkins::plugin { 'git-client': }
