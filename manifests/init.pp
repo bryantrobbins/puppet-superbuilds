@@ -53,6 +53,7 @@ class superbuilds (
   }
 
   class { 'jenkins::cli_helper':
+    ssh_keyfile => '/home/jenkinsworker/.ssh/id_rsa'
   }
 
   jenkins::plugin { 'git-client': }
