@@ -24,6 +24,9 @@ do
   ready
 done
 
+# Create the seed job
+cat "/usr/lib/jenkins/seed-job-config.xml" | java -jar ${JENKINS_CLI} -s http://localhost:8080 create-job "seed-job"
+
 # Create the admin user, passing no credentials
 $HELPER create_or_update_user "$ADMIN_USER" "$ADMIN_EMAIL" "$ADMIN_PASSWORD" "$ADMIN_FULLNAME" "$ADMIN_PUBKEY"
 

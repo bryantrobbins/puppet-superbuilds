@@ -53,9 +53,6 @@ class superbuilds (
   }
 
   class { 'jenkins::cli_helper': }
-  class { 'jenkins::':
-    cli_ssh_keyfile  => '/home/jenkinsworker/.ssh/id_rsa',
-  }
 
   jenkins::plugin { 'git-client': }
   jenkins::plugin { 'ssh-credentials': }
@@ -68,10 +65,6 @@ class superbuilds (
   jenkins::plugin { 'scm-api': }
   jenkins::plugin { 'job-dsl': }
 
-  jenkins::job { 'seed-job':
-    config => template('superbuilds/seed.xml.erb'),
-  }
-
   file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
     ensure           => file,
     content          => template('superbuilds/setadmin.erb'),
@@ -79,10 +72,15 @@ class superbuilds (
     require          => Class['jenkins::cli_helper'],
   }
 
-  exec { '/usr/lib/jenkins/jenkins-bootstrap.sh':
-    require          => File['/usr/lib/jenkins/jenkins-bootstrap.sh'],
-    creates          => '/usr/lib/jenkins/jenkins-bootstrap.done',
+  file { '/usr/lib/jenkins/seed-job.xml':
+    ensure           => file,
+    content          => template('superbuilds/seed-job.xml.erb'),
+    mode             => '0700',
+    require          => Class['jenkins::cli_helper'],
   }
 
-
+  exec { '/usr/lib/jenkins/jenkins-bootstrap.sh':
+    creates          => '/usr/lib/jenkins/jenkins-bootstrap.done',
+    require          => File['/usr/lib/jenkins/jenkins-bootstrap.sh'],
+  }
 }
