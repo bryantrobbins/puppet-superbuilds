@@ -67,7 +67,7 @@ class superbuilds (
   jenkins::plugin { 'job-dsl': }
 
   jenkins::job { 'seed-job':
-    config => template("templates/seed.xml.erb"),
+    config => template("seed.xml.erb"),
   }
 
   file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
