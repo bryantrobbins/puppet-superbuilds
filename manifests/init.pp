@@ -53,8 +53,7 @@ class superbuilds (
   }
 
   class { 'jenkins::cli_helper': }
-  class { 'jenkins::'
-    cli_ssh_keyfile  => '/home/jenkinsworker/.ssh/id_rsa',
+  class { 'jenkins::':
     cli_ssh_keyfile  => '/home/jenkinsworker/.ssh/id_rsa',
   }
 
