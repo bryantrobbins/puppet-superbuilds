@@ -74,7 +74,7 @@ class superbuilds (
 
   file { '/usr/lib/jenkins/seed-job.xml':
     ensure           => file,
-    content          => template('superbuilds/seed-job.xml.erb'),
+    content          => template('superbuilds/seed.xml.erb'),
     mode             => '0700',
     require          => Class['jenkins::cli_helper'],
   }
