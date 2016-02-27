@@ -84,4 +84,7 @@ class superbuilds (
     creates          => '/usr/lib/jenkins/jenkins-bootstrap.done',
     require          => [ File['/usr/lib/jenkins/jenkins-bootstrap.sh'], File['/usr/lib/jenkins/seed-job.xml'] ]
   }
+
+  class { 'groovy': }
+
 }
