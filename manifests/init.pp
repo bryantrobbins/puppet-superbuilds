@@ -41,6 +41,7 @@ class superbuilds (
   include superbuilds::docker
   include superbuilds::packer
   include superbuilds::r
+  include superbuilds::nodejs
 
   # The jenkinsworker is used by the hacky bootstrap script exec
   user { 'jenkinsworker':
