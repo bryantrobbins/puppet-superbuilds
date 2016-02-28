@@ -66,6 +66,7 @@ class superbuilds (
   jenkins::plugin { 'scm-api': }
   jenkins::plugin { 'git': }
   jenkins::plugin { 'job-dsl': }
+  jenkins::plugin { 'ws-cleanup': }
 
   file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
     ensure           => file,
