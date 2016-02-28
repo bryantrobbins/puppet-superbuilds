@@ -67,6 +67,7 @@ class superbuilds (
   jenkins::plugin { 'git': }
   jenkins::plugin { 'job-dsl': }
   jenkins::plugin { 'ws-cleanup': }
+  jenkins::plugin { 'copyartifact': }
 
   file { '/usr/lib/jenkins/jenkins-bootstrap.sh':
     ensure           => file,
