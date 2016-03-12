@@ -86,7 +86,11 @@ class superbuilds (
 
   exec { '/usr/lib/jenkins/jenkins-bootstrap.sh':
     creates          => '/usr/lib/jenkins/jenkins-bootstrap.done',
-    require          => [ File['/usr/lib/jenkins/jenkins-bootstrap.sh'], File['/usr/lib/jenkins/seed-job.xml'] ]
+    require          => [ File['/usr/lib/jenkins/jenkins-bootstrap.sh'], File['/usr/lib/jenkins/seed-job.xml'] ],
+  }
+  
+  class { 'gradle':
+    version => '2.11',
   }
 
 }
