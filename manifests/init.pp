@@ -53,6 +53,26 @@ class superbuilds (
     require          => User['jenkinsworker'],
   }
 
+  group { 'jenkins-group':
+    name         => 'jenkins',
+    ensure       => present,
+  }
+
+  user { 'jenkins-user':
+    name         => 'jenkins',
+    ensure       => present,
+    groups       => 'jenkins',
+    managehome   => false,
+    home         => '/var/lib/jenkins',
+    require      => Group['jenkins-group'],
+  }
+
+  class { 'jenkins': 
+    manage_user  => false,
+    manage_group => false,
+    require      => User['jenkins-user'],
+  }
+
   class { 'jenkins::cli_helper': }
 
   jenkins::plugin { 'git-client': }
