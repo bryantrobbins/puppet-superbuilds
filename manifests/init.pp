@@ -61,7 +61,7 @@ class superbuilds (
   user { 'jenkins-user':
     name         => 'jenkins',
     ensure       => present,
-    groups       => 'jenkins',
+    groups       => [ 'jenkins', 'docker'],
     managehome   => false,
     home         => '/var/lib/jenkins',
     require      => Group['jenkins-group'],
