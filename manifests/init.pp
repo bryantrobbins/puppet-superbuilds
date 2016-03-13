@@ -112,4 +112,8 @@ class superbuilds (
     version => '2.11',
   }
 
+  package { 'jq':
+    ensure => present,
+  }
+
 }
