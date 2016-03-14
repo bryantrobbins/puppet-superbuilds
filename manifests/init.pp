@@ -64,7 +64,7 @@ class superbuilds (
     groups       => [ 'jenkins', 'docker'],
     managehome   => false,
     home         => '/var/lib/jenkins',
-    require      => Group['jenkins-group'],
+    require      => [ Group['jenkins-group'], Package['docker'] ],
   }
 
   class { 'jenkins': 
