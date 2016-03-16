@@ -1,8 +1,8 @@
 #!/bin/bash -e
 # Generate an SSH key for the admin user
-ADMIN_USER="<% @admin_user -%>"
+ADMIN_USER="<%= @admin_user %>"
 ADMIN_EMAIL='admin@localhost'
-ADMIN_PASSWORD="<% @admin_password -%>"
+ADMIN_PASSWORD="<%= @admin_password %>"
 ADMIN_FULLNAME='Created for puppet'
 ADMIN_SSH_KEY='/home/jenkinsworker/.ssh/id_rsa'
 JENKINS_CLI='/usr/lib/jenkins/jenkins-cli.jar'
