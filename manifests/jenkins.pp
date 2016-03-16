@@ -30,13 +30,13 @@ class superbuilds::jenkins (
     require      => [ Group['jenkins-group'], Package['docker'] ],
   }
 
-  class { 'jenkins': 
+  class { '::jenkins': 
     manage_user  => false,
     manage_group => false,
     require      => User['jenkins-user'],
   }
 
-  class { 'jenkins::cli_helper': }
+  class { '::jenkins::cli_helper': }
 
   jenkins::plugin { 'git-client': }
   jenkins::plugin { 'ssh-credentials': }
