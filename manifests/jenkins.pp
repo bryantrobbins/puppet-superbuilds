@@ -1,8 +1,8 @@
 class superbuilds::jenkins (
-  $admin_user=hiera(superbuilds::jenkins::user),
-  $admin_password=hiera(superbuilds::jenkins::password),
-  $seed_repo=hiera(superbuilds::jenkins::seed::repo),
-  $seed_path=hiera(superbuilds::jenkins::seed::path),
+  $admin_user=hiera('superbuilds::jenkins::user'),
+  $admin_password=hiera('superbuilds::jenkins::password'),
+  $seed_repo=hiera('superbuilds::jenkins::seed::repo'),
+  $seed_path=hiera('superbuilds::jenkins::seed::path'),
 ) {
 
 
