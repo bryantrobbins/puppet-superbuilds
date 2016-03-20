@@ -30,11 +30,10 @@ class superbuilds::jenkins (
     require      => [ Group['jenkins-group'], Package['docker'] ],
   }
 
-  class { '::java':
-    distribution => 'jdk',
-    version      => '8',
+  package { 'java-1.8.0-openjdk-devel':
+    ensure       => present,
   }
-  
+ 
   class { '::jenkins': 
     manage_user  => false,
     manage_group => false,
