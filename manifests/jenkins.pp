@@ -31,6 +31,7 @@ class superbuilds::jenkins (
   }
 
   class { '::java':
+    distribution => 'jdk',
     version      => '8',
   }
   
