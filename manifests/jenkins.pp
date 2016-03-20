@@ -31,7 +31,7 @@ class superbuilds::jenkins (
   }
 
   class { '::java':
-    version      => 8,
+    version      => '8',
   }
   
   class { '::jenkins': 
