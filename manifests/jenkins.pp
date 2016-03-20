@@ -30,10 +30,15 @@ class superbuilds::jenkins (
     require      => [ Group['jenkins-group'], Package['docker'] ],
   }
 
+  class { '::java':
+    version      => 8,
+  }
+  
   class { '::jenkins': 
     manage_user  => false,
     manage_group => false,
-    require      => User['jenkins-user'],
+    install_java => false,
+    require      => [ User['jenkins-user'], Class['java'] ],
   }
 
   class { '::jenkins::cli_helper': }
