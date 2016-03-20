@@ -38,7 +38,7 @@ class superbuilds::jenkins (
     manage_user  => false,
     manage_group => false,
     install_java => false,
-    require      => [ User['jenkins-user'], Class['java'] ],
+    require      => [ User['jenkins-user'], Package['java-1.8.0-openjdk-devel'] ],
   }
 
   class { '::jenkins::cli_helper': }
