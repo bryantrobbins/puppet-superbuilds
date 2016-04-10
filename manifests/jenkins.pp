@@ -34,6 +34,10 @@ class superbuilds::jenkins (
     ensure       => present,
   }
  
+  package { 'java-1.7.0':
+    ensure       => absent,
+  }
+ 
   class { '::jenkins': 
     manage_user  => false,
     manage_group => false,
